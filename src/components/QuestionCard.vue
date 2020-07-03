@@ -1,89 +1,87 @@
 <template>
-  <div class="card">
-    <div class="question" >
-      <div class="question-answer">
-        <div class="title">
-          {{
-            `${num + 1}. ${question.text.__cdata}`
-          }}
+  <div class="question" >
+    <div class="question-answer">
+      <div class="title">
+        {{
+          `${num + 1}. ${question.text.__cdata}`
+        }}
+      </div>
+      <div class="image" v-if="question.image && question.image._file!=''">
+        <img :src="require(`../${question.image._file}`)" alt="">
+      </div>
+      <div class="answers" v-if="!$parent.practice">
+        <div class="answers-row correct">
+          A.
+          <span class="ans-text">
+            {{ question.answers.answer.__cdata }}
+          </span>
         </div>
-        <div class="image" v-if="question.image && question.image._file!=''">
-          <img :src="require(`../${question.image._file}`)" alt="">
+        <div class="answers-row">
+          B.
+          <span class="ans-text">
+            {{ question.answers.distractor_1.__cdata }}
+          </span>
         </div>
-        <div class="answers" v-if="!$parent.practice">
-          <div class="answers-row correct">
-            A.
-            <span class="ans-text">
-              {{ question.answers.answer.__cdata }}
-            </span>
-          </div>
-          <div class="answers-row">
-            B.
-            <span class="ans-text">
-              {{ question.answers.distractor_1.__cdata }}
-            </span>
-          </div>
-          <div class="answers-row">
-            C.<span class="ans-text">
-              {{ question.answers.distractor_2.__cdata }}
-            </span>
-          </div>
-          <div class="answers-row">
-            D.
-            <span class="ans-text">
-              {{ question.answers.distractor_3.__cdata }}
-            </span>
-          </div>
+        <div class="answers-row">
+          C.<span class="ans-text">
+            {{ question.answers.distractor_2.__cdata }}
+          </span>
         </div>
-        <div class="answers" v-else ref="options">
-          <div class="answers-row"
-            ref="op0"
-            @click="()=>checkAnswer(0)">
-            A.
-            <span class="ans-text">
-              {{ ansewers[0] }}
-            </span>
-          </div>
-          <div class="answers-row"
-            ref="op1"
-            @click="()=>checkAnswer(1)">
-            B.
-            <span class="ans-text">
-              {{ ansewers[1] }}
-            </span>
-          </div>
-          <div class="answers-row"
-            ref="op2"
-            @click="()=>checkAnswer(2)">
-            C.
-            <span class="ans-text">
-              {{ ansewers[2] }}
-            </span>
-          </div>
-          <div class="answers-row"
-            ref="op3"
-            @click="()=>checkAnswer(3)">
-            D.
-            <span class="ans-text">
-              {{ ansewers[3] }}
-            </span>
-          </div>
+        <div class="answers-row">
+          D.
+          <span class="ans-text">
+            {{ question.answers.distractor_3.__cdata }}
+          </span>
         </div>
-        <div class="more-info" v-if="!$parent.practice || selected">
-          <hr/>
-          {{ question.chapter.__cdata }}
+      </div>
+      <div class="answers" v-else ref="options">
+        <div class="answers-row"
+          ref="op0"
+          @click="()=>checkAnswer(0)">
+          A.
+          <span class="ans-text">
+            {{ ansewers[0] }}
+          </span>
+        </div>
+        <div class="answers-row"
+          ref="op1"
+          @click="()=>checkAnswer(1)">
+          B.
+          <span class="ans-text">
+            {{ ansewers[1] }}
+          </span>
+        </div>
+        <div class="answers-row"
+          ref="op2"
+          @click="()=>checkAnswer(2)">
+          C.
+          <span class="ans-text">
+            {{ ansewers[2] }}
+          </span>
+        </div>
+        <div class="answers-row"
+          ref="op3"
+          @click="()=>checkAnswer(3)">
+          D.
+          <span class="ans-text">
+            {{ ansewers[3] }}
+          </span>
+        </div>
+      </div>
+      <div class="more-info" v-if="selected">
+        <hr/>
+        {{ question.chapter.__cdata }}
+        <br/>
+        <div v-if="question.source.__cdata!=''">
           <br/>
-          <div v-if="question.source.__cdata!=''">
-            <br/>
-            {{ question.source.__cdata }}
-          </div>
-          <br/>
-          <div v-if="question.link._src!=''">
-            See book:
-            <a :href="question.link._src" target="_blank">
-              {{question.link._src}}
-            </a>
-          </div>
+          {{ question.source.__cdata }}
+        </div>
+        <br/>
+        <div v-if="question.link._src!=''">
+          See book:
+          <a :href="question.link._src" target="_blank">
+            {{question.link._src}}
+          </a>
         </div>
       </div>
     </div>
