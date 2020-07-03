@@ -1,11 +1,20 @@
 <template>
   <div class="page-container">
-    <md-app md-mode="reveal">
+    <md-app md-mode="fixed">
       <md-app-toolbar class="md-primary">
-        <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">My Title</span>
+        <div class="md-toolbar-row">
+          <div class="md-toolbar-section-start">
+            <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
+              <md-icon>menu</md-icon>
+            </md-button>
+            <div class="md-toolbar-row">
+              <span class="md-title">
+                ICBC Knowledge Test
+              </span>
+            </div>
+          </div>
+        </div>
+
       </md-app-toolbar>
 
       <md-app-drawer :md-active.sync="menuVisible">
@@ -14,40 +23,57 @@
         </md-toolbar>
 
         <md-list>
-          <md-button>
-            <md-list-item>
+          <router-link to="/home">
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
                 <md-icon>move_to_inbox</md-icon>
                 <span class="md-list-item-text">Home</span>
-            </md-list-item>
-          </md-button>
+              </md-list-item>
+            </md-button>
+          </router-link>
 
-          <md-button>
-            <md-list-item>
-              <md-icon>send</md-icon>
-              <span class="md-list-item-text">Road Rules</span>
-            </md-list-item>
-          </md-button>
+          <router-link to='/rules'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <md-icon>send</md-icon>
+                <span class="md-list-item-text">Road Rules</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
 
-          <md-button>
-            <md-list-item>
-              <md-icon>delete</md-icon>
-              <span class="md-list-item-text">Road Signs</span>
-            </md-list-item>
-          </md-button>
+          <router-link to='/signs'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <md-icon>delete</md-icon>
+                <span class="md-list-item-text">Road Signs</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
 
-          <md-button>
-            <md-list-item>
-              <md-icon>error</md-icon>
-              <span class="md-list-item-text">Test Simulator</span>
-            </md-list-item>
-          </md-button>
+          <router-link to='/simulator'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <md-icon>error</md-icon>
+                <span class="md-list-item-text">Test Simulator</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
+
+          <router-link to='/archived'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <md-icon>delete</md-icon>
+                <span class="md-list-item-text">Archived</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
 
         </md-list>
 
       </md-app-drawer>
 
       <md-app-content>
-        good
+        <router-view/>
       </md-app-content>
     </md-app>
   </div>
@@ -55,7 +81,6 @@
 
 <script>
 export default {
-  name: 'Reveal',
   data: () => ({
     menuVisible: false,
   }),
@@ -77,6 +102,8 @@ body {
     .md-drawer {
       width: 230px;
       .md-button {
+        height: 46px;
+        width: 100%;
         margin: 0;
         .md-ripple {
           display: flex;
