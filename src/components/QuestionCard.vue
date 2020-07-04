@@ -60,19 +60,11 @@
         </div>
       </div>
       <div class="more-info" v-if="selected && !correct">
-        <hr/>
-        {{ question.chapter.__cdata }}
-        <br/>
+        <a :href="question.link._src" target="_blank">
+          {{ question.chapter.__cdata }}
+        </a>
         <div v-if="question.source.__cdata!=''">
-          <br/>
           {{ question.source.__cdata }}
-        </div>
-        <br/>
-        <div v-if="question.link._src!=''">
-          See book:
-          <a :href="question.link._src" target="_blank">
-            {{question.link._src}}
-          </a>
         </div>
       </div>
     </div>
@@ -93,10 +85,17 @@ export default {
       type: Number,
       required: true,
     },
+    selected: {
+      type: Boolean,
+      required: true,
+    },
+    setSelect: {
+      type: Function,
+      required: true,
+    },
   },
   data() {
     return {
-      selected: false,
       correct: true,
     };
   },
@@ -133,7 +132,7 @@ export default {
           }
         });
       }
-      this.selected = true;
+      this.setSelect(true);
       this.$refs.options.classList.add('question-answered');
     },
   },
@@ -144,7 +143,6 @@ export default {
   .question{
       display: flex;
       flex-grow: 1;
-      max-width: 520px;
       .ans-text:first-letter{
         margin-left: 6px;
         text-transform: capitalize;
@@ -155,18 +153,20 @@ export default {
       flex-direction: column;
       width: 100%;
       .md-title{
-        font-size: 18px;
-        font-weight: 500;
         width: 100%;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        padding: 12px 0px;
       }
       .answers-row{
         &:hover{
           cursor: pointer;
-          box-shadow: 0px 0px 6px 6px #eee;
+          box-shadow: 0px 0px 15px 3px #eee;
         }
         min-height: 48px;
         width: 100%;
-        margin: 12px 0;
+        margin-bottom: 12px;
         padding: 12px;
         border: 2px solid #eee;
         display: flex;
@@ -174,7 +174,7 @@ export default {
         border-radius: 8px;
       }
       .ans-idx {
-        padding-right: 10px;
+        padding-right: 5px;
       }
       .ans-content {
         text-transform: capitalize;
@@ -183,7 +183,11 @@ export default {
     .image{
       display: flex;
       align-items: center;
-      padding: 6px;
+      justify-content: center;
+      margin-bottom: 16px;
+      img {
+        height: 150px;
+      }
     }
     .correct{
         background: rgba(#0e0, 0.3);

@@ -9,26 +9,36 @@
           <md-icon>close</md-icon>
         </md-button>
       </div>
-      <hr/>
     </md-card-header>
     <md-card-content>
       <question-card
         :question="currentQuestion"
         :num="currentIdx"
+        :selected="selected"
+        :setSelect="setSelect"
         :key="currentQuestion._id"
       />
     </md-card-content>
 
     <md-card-actions>
-      <md-button>
+      <md-button
+        v-show="selected"
+        class="md-raised"
+      >
         Archive
       </md-button>
       <md-button
+        class="md-raised md-primary"
         @click="nextQuestion"
       >
         Next
       </md-button>
     </md-card-actions>
+
+    <notifications
+      group="qw"
+      :style="{'padding-top': '64px'}"
+    />
   </md-card>
 </template>
 
@@ -52,6 +62,7 @@ export default {
   data() {
     return {
       currentIdx: 0,
+      selected: false,
     };
   },
   computed: {
@@ -64,25 +75,47 @@ export default {
   },
   methods: {
     nextQuestion() {
-      this.currentIdx += 1;
+      if (this.selected) {
+        this.setSelect(false);
+        this.currentIdx += 1;
+      } else {
+        this.$notify({
+          group: 'qw',
+          type: 'error',
+          duration: 2000,
+          speed: 1000,
+          title: 'Selection Required',
+          text: 'Please select an answer to continue.',
+        });
+      }
+    },
+    setSelect(select) {
+      this.selected = select;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.md-title {
-    margin: 0 !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .md-button {
-      min-width: 32px;
-      max-width: 32px;
-      .md-icon {
-        margin: 0;
-        font-size: 32px;
+.md-card-header {
+  padding: 8px 16px 8px 16px;
+  border-bottom: 1px solid #eee;
+  .md-title {
+      margin: 0 !important;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 16px;
+      font-weight: 500;
+      .md-button {
+        --button-size: 28px;
+        min-width: var(--button-size);
+        max-width: var(--button-size);
+        .md-icon {
+          margin: 0;
+          font-size: var(--button-size);
+        }
       }
     }
-  }
+}
 </style>
