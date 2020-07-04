@@ -1,7 +1,7 @@
 <template>
   <div class="question" >
     <div class="question-answer">
-      <div class="title">
+      <div class="md-title">
         {{
           `${num + 1}. ${question.text.__cdata}`
         }}
@@ -9,66 +9,57 @@
       <div class="image" v-if="question.image && question.image._file!=''">
         <img :src="require(`../${question.image._file}`)" alt="">
       </div>
-      <div class="answers" v-if="!$parent.practice">
-        <div class="answers-row correct">
-          A.
-          <span class="ans-text">
-            {{ question.answers.answer.__cdata }}
-          </span>
-        </div>
-        <div class="answers-row">
-          B.
-          <span class="ans-text">
-            {{ question.answers.distractor_1.__cdata }}
-          </span>
-        </div>
-        <div class="answers-row">
-          C.<span class="ans-text">
-            {{ question.answers.distractor_2.__cdata }}
-          </span>
-        </div>
-        <div class="answers-row">
-          D.
-          <span class="ans-text">
-            {{ question.answers.distractor_3.__cdata }}
-          </span>
-        </div>
-      </div>
-      <div class="answers" v-else ref="options">
+      <div class="answers" ref="options">
         <div class="answers-row"
           ref="op0"
           @click="()=>checkAnswer(0)">
-          A.
           <span class="ans-text">
-            {{ ansewers[0] }}
+            <span class="ans-idx">
+              A.
+            </span>
+            <span class="ans-content">
+              {{ ansewers[0] }}
+            </span>
           </span>
         </div>
         <div class="answers-row"
           ref="op1"
           @click="()=>checkAnswer(1)">
-          B.
           <span class="ans-text">
-            {{ ansewers[1] }}
+            <span class="ans-idx">
+              B.
+            </span>
+            <span class="ans-content">
+              {{ ansewers[1] }}
+            </span>
           </span>
         </div>
         <div class="answers-row"
           ref="op2"
           @click="()=>checkAnswer(2)">
-          C.
           <span class="ans-text">
-            {{ ansewers[2] }}
+            <span class="ans-idx">
+              C.
+            </span>
+            <span class="ans-content">
+              {{ ansewers[2] }}
+            </span>
           </span>
         </div>
         <div class="answers-row"
           ref="op3"
           @click="()=>checkAnswer(3)">
-          D.
           <span class="ans-text">
-            {{ ansewers[3] }}
+            <span class="ans-idx">
+              D.
+            </span>
+            <span class="ans-content">
+              {{ ansewers[3] }}
+            </span>
           </span>
         </div>
       </div>
-      <div class="more-info" v-if="selected">
+      <div class="more-info" v-if="selected && !correct">
         <hr/>
         {{ question.chapter.__cdata }}
         <br/>
@@ -106,6 +97,7 @@ export default {
   data() {
     return {
       selected: false,
+      correct: true,
     };
   },
   computed: {
@@ -133,7 +125,13 @@ export default {
       if (this.question.answers.answer.__cdata === this.ansewers[op]) {
         this.$refs[`op${op}`].classList.add('correct');
       } else {
+        this.correct = false;
         this.$refs[`op${op}`].classList.add('wrong');
+        this.ansewers.forEach((answer, idx) => {
+          if (this.question.answers.answer.__cdata === answer) {
+            this.$refs[`op${idx}`].classList.add('correct');
+          }
+        });
       }
       this.selected = true;
       this.$refs.options.classList.add('question-answered');
@@ -143,14 +141,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .card{
-    margin: 16px;
-    padding: 32px;
-    background: white;
-    box-shadow: 0px 0px 12px 12px #eee;
-    display: flex;
-    justify-content: center;
-    .question{
+  .question{
       display: flex;
       flex-grow: 1;
       max-width: 520px;
@@ -163,11 +154,10 @@ export default {
       display: flex;
       flex-direction: column;
       width: 100%;
-      .title{
-        font-size: 16px;
-        font-weight: 600;
+      .md-title{
+        font-size: 18px;
+        font-weight: 500;
         width: 100%;
-        min-height: 60px;
       }
       .answers-row{
         &:hover{
@@ -183,6 +173,12 @@ export default {
         align-items: center;
         border-radius: 8px;
       }
+      .ans-idx {
+        padding-right: 10px;
+      }
+      .ans-content {
+        text-transform: capitalize;
+      }
     }
     .image{
       display: flex;
@@ -195,7 +191,6 @@ export default {
     .wrong{
         background: rgba(#f00, 0.3);
     }
-  }
   .question-answered{
     pointer-events: none;
   }
