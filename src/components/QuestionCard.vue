@@ -149,85 +149,86 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .question{
-      display: flex;
-      flex-grow: 1;
-      .ans-text:first-letter{
-        margin-left: 6px;
-        text-transform: capitalize;
-      }
+.question {
+    display: flex;
+    flex-grow: 1;
+    .ans-text:first-letter {
+      margin-left: 6px;
+      text-transform: capitalize;
     }
-    .question-answer{
-      display: flex;
-      flex-direction: column;
+  }
+  .question-answer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .md-title {
       width: 100%;
-      .md-title{
-        width: 100%;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.5;
-        padding: 12px 0px;
-      }
-      .answers-row{
-        &:hover{
-          cursor: pointer;
-          box-shadow: 0px 0px 15px 3px #eee;
-        }
-        min-height: 48px;
-        width: 100%;
-        margin-bottom: 12px;
-        padding: 12px;
-        border: 2px solid #eee;
-        display: flex;
-        align-items: center;
-        border-radius: 8px;
-      }
-      .ans-idx {
-        padding-right: 5px;
-      }
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      padding: 12px 0px;
     }
-    .image{
+    .answers-row {
+      &:hover{
+        cursor: pointer;
+        box-shadow: 0px 0px 15px 3px #eee;
+      }
+      min-height: 48px;
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 12px;
+      border: 2px solid #eee;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      img {
-        height: 150px;
+      border-radius: 8px;
+      .ans-text {
+        line-height: 1.2;
       }
     }
-    .correct{
-        background: #4b8869;
-        color: white;
-        &:before {
-          font-family: Material Icons;
-          content: "\e5ca";
-          border: 1px solid;
-          border-radius: 100%;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          justify-content: center;
-          font-size: 16px;
-          font-weight: 600;
-        }
+    .ans-idx {
+      padding-right: 5px;
     }
-    .wrong{
-        background: #A82E2E;
-        color: white;
-        &:before {
-          font-family: Material Icons;
-          content: "\e14c";
-          border: 1px solid;
-          border-radius: 100%;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          justify-content: center;
-          font-size: 16px;
-          font-weight: 600;
-        }
-    }
-  .question-answered{
-    pointer-events: none;
   }
+  .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    img {
+      height: 150px;
+    }
+  }
+  .correct {
+      background: #4b8869;
+      color: white;
+      &:before {
+        font-family: Material Icons;
+        content: "\e5ca";
+        border: 1px solid;
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        font-size: 22px;
+        font-weight: 600;
+        margin-right: 6px;
+      }
+  }
+  .wrong {
+      background: #A82E2E;
+      color: white;
+      &:before {
+        font-family: Material Icons;
+        content: "\e14c";
+        border: 1px solid;
+        border-radius: 100%;
+        width: 24px;
+        height: 24px;
+        font-size: 22px;
+        font-weight: 600;
+        margin-right: 6px;
+      }
+  }
+.question-answered {
+  pointer-events: none;
+}
 </style>
