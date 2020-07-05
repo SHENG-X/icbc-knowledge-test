@@ -5,7 +5,10 @@
         <span>
           Question {{ currentIdx + 1 }} of {{ questionSize }}
         </span>
-        <md-button @click="() => setCurrentQuestionSet([])">
+        <md-button
+          v-if="showCloseButton"
+          @click="() => setCurrentQuestionSet([])"
+        >
           <md-icon>close</md-icon>
         </md-button>
       </div>
@@ -57,6 +60,10 @@ export default {
     setCurrentQuestionSet: {
       type: Function,
       required: true,
+    },
+    showCloseButton: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

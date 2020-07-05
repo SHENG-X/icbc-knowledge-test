@@ -6,6 +6,7 @@
       before you take the knowledge test."
     :questions="$store.getters.allQuestions"
     oneTestTitle="Practice All Quesions"
+    :showCloseButton="false"
   />
 </template>
 

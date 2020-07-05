@@ -42,6 +42,7 @@
         v-if="currentQuestionSet.length"
         :questions="currentQuestionSet"
         :setCurrentQuestionSet="setCurrentQuestionSet"
+        :showCloseButton="showCloseButton"
       />
     </div>
   </div>
@@ -78,6 +79,10 @@ export default {
     onTestDescription: {
       type: String,
       default: '',
+    },
+    showCloseButton: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

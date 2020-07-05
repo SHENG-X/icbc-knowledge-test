@@ -6,6 +6,7 @@
       questions will be different."
     :questions="$store.getters.mockQuestions"
     oneTestTitle="Start Mock Test"
+    :showCloseButton="false"
   />
 </template>
 
