@@ -25,5 +25,10 @@ export default new Vuex.Store({
     allQuestions(state) {
       return [...state.rules, ...state.signs];
     },
+    mockQuestions(state, getters) {
+      const questions = getters.allQuestions;
+      const shuffled = questions.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, 50);
+    },
   },
 });
