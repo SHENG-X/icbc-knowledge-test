@@ -176,9 +176,6 @@ export default {
       .ans-idx {
         padding-right: 5px;
       }
-      .ans-content {
-        text-transform: capitalize;
-      }
     }
     .image{
       display: flex;
