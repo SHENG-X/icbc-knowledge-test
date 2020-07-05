@@ -33,10 +33,18 @@
         Archive
       </md-button>
       <md-button
+        v-if="currentIdx !== questions.length -1"
         class="md-raised md-primary"
         @click="nextQuestion"
       >
         Next
+      </md-button>
+      <md-button
+        v-if="currentIdx === questions.length -1"
+        class="md-raised md-primary"
+        @click="() => setCurrentQuestionSet([])"
+      >
+        Continue
       </md-button>
     </md-card-actions>
 
