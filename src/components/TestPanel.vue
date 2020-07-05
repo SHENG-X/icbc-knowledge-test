@@ -14,13 +14,24 @@
           {{ description }}
         </div>
         <div class="test-sets">
-          <md-card v-for="(questions, index) in questionSets" :key="index">
-            <md-button
-              @click="() => setCurrentQuestionSet(questions)"
-            >
-              Practice Set #{{ index + 1 }}
-            </md-button>
-          </md-card>
+          <div v-if="oneTestTitle.length">
+            <md-card>
+              <md-button
+                @click="() => setCurrentQuestionSet(questions)"
+              >
+                {{ oneTestTitle }}
+              </md-button>
+            </md-card>
+          </div>
+          <div v-else>
+            <md-card v-for="(questions, index) in questionSets" :key="index">
+              <md-button
+                @click="() => setCurrentQuestionSet(questions)"
+              >
+                Practice Set #{{ index + 1 }}
+              </md-button>
+            </md-card>
+          </div>
         </div>
       </md-card-content>
 
@@ -60,6 +71,14 @@ export default {
       type: Number,
       default: 35,
     },
+    oneTestTitle: {
+      type: String,
+      default: '',
+    },
+    onTestDescription: {
+      type: String,
+      default: '',
+    },
   },
   data() {
     return {
@@ -68,6 +87,9 @@ export default {
   },
   computed: {
     questionSets() {
+      if (this.oneTestTitle) {
+        return this.questions;
+      }
       const size = this.questionSetSize;
       const questionsCopy = JSON.parse(JSON.stringify(this.questions));
       const questionSetsLocal = [];
@@ -77,6 +99,11 @@ export default {
       questionSetsLocal.push(questionsCopy);
       return questionSetsLocal;
     },
+  },
+  mounted() {
+    if (this.oneTestTitle) {
+      this.setCurrentQuestionSet(this.questions);
+    }
   },
   methods: {
     setCurrentQuestionSet(questions) {
