@@ -26,9 +26,14 @@ const routes = [
     component: () => import('../views/Archived.vue'),
   },
   {
-    path: '/simulator',
-    name: 'simulator',
-    component: () => import('../views/Simulator.vue'),
+    path: '/mock',
+    name: 'mock',
+    component: () => import('../views/MockQuestions.vue'),
+  },
+  {
+    path: '/all',
+    name: 'all',
+    component: () => import('../views/AllQuestions.vue'),
   },
   {
     path: '/home',

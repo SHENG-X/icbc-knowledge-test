@@ -26,8 +26,23 @@
           <router-link to="/home">
             <md-button @click="menuVisible = !menuVisible">
               <md-list-item>
-                <md-icon>move_to_inbox</md-icon>
                 <span class="md-list-item-text">Home</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
+
+          <router-link to='/mock'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <span class="md-list-item-text">Mock Test</span>
+              </md-list-item>
+            </md-button>
+          </router-link>
+
+          <router-link to='/all'>
+            <md-button @click="menuVisible = !menuVisible">
+              <md-list-item>
+                <span class="md-list-item-text">All Questions</span>
               </md-list-item>
             </md-button>
           </router-link>
@@ -35,7 +50,6 @@
           <router-link to='/rules'>
             <md-button @click="menuVisible = !menuVisible">
               <md-list-item>
-                <md-icon>send</md-icon>
                 <span class="md-list-item-text">Road Rules</span>
               </md-list-item>
             </md-button>
@@ -44,17 +58,7 @@
           <router-link to='/signs'>
             <md-button @click="menuVisible = !menuVisible">
               <md-list-item>
-                <md-icon>delete</md-icon>
                 <span class="md-list-item-text">Road Signs</span>
-              </md-list-item>
-            </md-button>
-          </router-link>
-
-          <router-link to='/simulator'>
-            <md-button @click="menuVisible = !menuVisible">
-              <md-list-item>
-                <md-icon>error</md-icon>
-                <span class="md-list-item-text">Test Simulator</span>
               </md-list-item>
             </md-button>
           </router-link>
@@ -62,7 +66,6 @@
           <router-link to='/archived'>
             <md-button @click="menuVisible = !menuVisible">
               <md-list-item>
-                <md-icon>delete</md-icon>
                 <span class="md-list-item-text">Archived</span>
               </md-list-item>
             </md-button>
