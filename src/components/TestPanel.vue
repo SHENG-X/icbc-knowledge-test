@@ -28,7 +28,14 @@
               <md-button
                 @click="() => setCurrentQuestionSet(questions)"
               >
-                Practice Set #{{ index + 1 }}
+                <div class="button-label">
+                  <div>
+                    Practice Set #{{ index + 1 }}
+                  </div>
+                  <div class="question-count">
+                    {{ questions.length }} Questions
+                  </div>
+                </div>
               </md-button>
             </md-card>
           </div>
@@ -147,16 +154,26 @@ export default {
     .test-sets {
       .md-card {
         width: 100%;
-        height: 52px;
         margin: 12px 0px;
         .md-button {
           margin: 0;
           width: 100%;
           height: 100%;
+          padding: 6px 0px;
           ::v-deep .md-button-content {
             @extend .md-button;
             display: flex;
             align-items: center;
+          }
+        }
+        .button-label {
+          display: flex;
+          flex-direction: column;
+          align-items: end;
+          font-size: 16px;
+          .question-count {
+            color: #aaa;
+            font-size: 12px;
           }
         }
       }
