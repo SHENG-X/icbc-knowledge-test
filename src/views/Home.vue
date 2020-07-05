@@ -32,6 +32,13 @@
         buttonTitle="Practice Rule Quesions"
         route="/rules"
     />
+    <home-route-card
+      title="Archived Questions"
+      description="The questions below were you saved. It is
+      important for you to understand these questinos to pass the actual exam."
+      buttonTitle="Practice Archived Quesions"
+      route="/archived"
+    />
   </div>
 </template>
 

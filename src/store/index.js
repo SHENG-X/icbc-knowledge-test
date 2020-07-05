@@ -6,12 +6,27 @@ import signs from '../json/signs.json';
 
 Vue.use(Vuex);
 
+const ARCHIVE_KEY = 'icbc_question_archived';
+
 export default new Vuex.Store({
   state: {
     rules,
     signs,
+    archived: localStorage.getItem(ARCHIVE_KEY)
+      ? JSON.parse(localStorage.getItem(ARCHIVE_KEY)) : [],
   },
   mutations: {
+    archiveQuestion(state, question) {
+      const exit = state.archived.find((q) => JSON.stringify(q) === JSON.stringify(question));
+      if (!exit) {
+        state.archived.push(question);
+      }
+      localStorage.setItem(ARCHIVE_KEY, JSON.stringify(state.archived));
+    },
+    removeArchived(state, question) {
+      state.archived = state.archived.filter((q) => JSON.stringify(q) !== JSON.stringify(question));
+      localStorage.setItem(ARCHIVE_KEY, JSON.stringify(state.archived));
+    },
   },
   actions: {
   },
@@ -29,6 +44,9 @@ export default new Vuex.Store({
       const questions = getters.allQuestions;
       const shuffled = questions.sort(() => 0.5 - Math.random());
       return shuffled.slice(0, 50);
+    },
+    archivedQuestions(state) {
+      return state.archived;
     },
   },
 });

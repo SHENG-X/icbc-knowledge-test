@@ -27,10 +27,18 @@
 
     <md-card-actions>
       <md-button
-        v-show="selected"
+        v-show="selected && $route.name !== 'archived' && !currentArchived"
         class="md-raised"
+        @click="handleArchive"
       >
         Archive
+      </md-button>
+      <md-button
+        v-show="$route.name === 'archived'"
+        class="md-raised md-accent"
+        @click="removeArchive"
+      >
+        Remove
       </md-button>
       <md-button
         v-if="currentIdx !== questions.length -1"
@@ -40,7 +48,7 @@
         Next
       </md-button>
       <md-button
-        v-if="currentIdx === questions.length -1"
+        v-if="selected && currentIdx === questions.length -1"
         class="md-raised md-primary"
         @click="() => setCurrentQuestionSet([])"
       >
@@ -113,6 +121,15 @@ export default {
     currentQuestion() {
       return this.questions[this.currentIdx];
     },
+    currentArchived() {
+      let archived = false;
+      this.$store.getters.archivedQuestions.forEach((q) => {
+        if (JSON.stringify(q) === JSON.stringify(this.currentQuestion)) {
+          archived = true;
+        }
+      });
+      return archived;
+    },
     questionSize() {
       return this.questions.length;
     },
@@ -135,6 +152,20 @@ export default {
     },
     setSelect(select) {
       this.selected = select;
+    },
+    handleArchive() {
+      this.$store.commit('archiveQuestion', this.questions[this.currentIdx]);
+      this.$notify({
+        group: 'qw',
+        type: 'success',
+        duration: 2000,
+        speed: 1000,
+        title: 'Archived',
+        text: 'Question was saved.',
+      });
+    },
+    removeArchive() {
+      this.$store.commit('removeArchived', this.questions[this.currentIdx]);
     },
   },
 };
