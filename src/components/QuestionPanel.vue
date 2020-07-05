@@ -19,6 +19,8 @@
         :num="currentIdx"
         :selected="selected"
         :setSelect="setSelect"
+        :correctAnswered="correctAnswered"
+        :setCorrectAnswered="setCorrectAnswered"
         :key="currentQuestion._id"
       />
     </md-card-content>
@@ -42,15 +44,23 @@
       group="qw"
       :style="{'padding-top': '64px'}"
     />
+
+    <result-modal
+      :correctCount="correctAnswered"
+      :questionSize="questions.length"
+    />
+
   </md-card>
 </template>
 
 <script>
 import QuestionCard from '@/components/QuestionCard.vue';
+import ResultModal from '@/components/ResultModal.vue';
 
 export default {
   components: {
     QuestionCard,
+    ResultModal,
   },
   props: {
     questions: {
@@ -65,12 +75,31 @@ export default {
       type: Boolean,
       default: true,
     },
+    correctAnswered: {
+      type: Number,
+      required: true,
+    },
+    setCorrectAnswered: {
+      type: Function,
+      required: true,
+    },
   },
   data() {
     return {
       currentIdx: 0,
       selected: false,
     };
+  },
+  watch: {
+    selected(val) {
+      if (val === true) {
+        if (this.currentIdx === this.questions.length - 1) {
+          setTimeout(() => {
+            this.$modal.show('result-modal');
+          }, 160);
+        }
+      }
+    },
   },
   computed: {
     currentQuestion() {

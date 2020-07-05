@@ -50,6 +50,8 @@
         :questions="currentQuestionSet"
         :setCurrentQuestionSet="setCurrentQuestionSet"
         :showCloseButton="showCloseButton"
+        :correctAnswered="correctAnswered"
+        :setCorrectAnswered="setCorrectAnswered"
       />
     </div>
   </div>
@@ -95,7 +97,13 @@ export default {
   data() {
     return {
       currentQuestionSet: [],
+      correctAnswered: 0,
     };
+  },
+  watch: {
+    currentQuestionSet() {
+      this.correctAnswered = 0;
+    },
   },
   computed: {
     questionSets() {
@@ -120,6 +128,14 @@ export default {
   methods: {
     setCurrentQuestionSet(questions) {
       this.currentQuestionSet = questions;
+      this.setCorrectAnswered(0);
+    },
+    setCorrectAnswered(num) {
+      if (num) {
+        this.correctAnswered = num;
+      } else {
+        this.correctAnswered += 1;
+      }
     },
   },
 };

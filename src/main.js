@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VModal from 'vue-js-modal';
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
@@ -8,6 +9,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
+Vue.use(VModal);
 Vue.use(VueMaterial);
 Vue.use(Notifications);
 

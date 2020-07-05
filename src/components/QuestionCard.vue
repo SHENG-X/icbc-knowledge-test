@@ -93,6 +93,14 @@ export default {
       type: Function,
       required: true,
     },
+    correctAnswered: {
+      type: Number,
+      required: true,
+    },
+    setCorrectAnswered: {
+      type: Function,
+      required: true,
+    },
   },
   data() {
     return {
@@ -123,6 +131,7 @@ export default {
       }
       if (this.question.answers.answer.__cdata === this.ansewers[op]) {
         this.$refs[`op${op}`].classList.add('correct');
+        this.setCorrectAnswered();
       } else {
         this.correct = false;
         this.$refs[`op${op}`].classList.add('wrong');
@@ -187,10 +196,36 @@ export default {
       }
     }
     .correct{
-        background: rgba(#0e0, 0.3);
+        background: #4b8869;
+        color: white;
+        &:before {
+          font-family: Material Icons;
+          content: "\e5ca";
+          border: 1px solid;
+          border-radius: 100%;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 600;
+        }
     }
     .wrong{
-        background: rgba(#f00, 0.3);
+        background: #A82E2E;
+        color: white;
+        &:before {
+          font-family: Material Icons;
+          content: "\e14c";
+          border: 1px solid;
+          border-radius: 100%;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 600;
+        }
     }
   .question-answered{
     pointer-events: none;
