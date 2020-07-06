@@ -1,29 +1,8 @@
-# icbc-test-full
+<img src="https://imgur.com/pr0m4CT" alt="ICBC Knowledge Test" width="256px"  height="256px"/>
 
-## Project setup
-```
-npm install
-```
+#### A Free and Open-Source ICBC Knowledge Test application that intended to help people to pass knowledge test in BC
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Welcome to the front page of **ICBC Knowledge Test**. This app is completely free to use. This app was initially built to help my friends and families to pass the knowledge test in BC. I tried to make the app simple and easy to use.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### [Go to App](https://sheng-x.github.io/icbc-knowledge-test/home)
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
