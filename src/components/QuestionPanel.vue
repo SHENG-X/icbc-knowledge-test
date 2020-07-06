@@ -165,6 +165,7 @@ export default {
       });
     },
     removeArchive() {
+      this.setSelect(false);
       this.$store.commit('removeArchived', this.questions[this.currentIdx]);
     },
   },
