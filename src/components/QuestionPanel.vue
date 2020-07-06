@@ -158,8 +158,8 @@ export default {
       this.$notify({
         group: 'qw',
         type: 'success',
-        duration: 2000,
-        speed: 1000,
+        duration: 300,
+        speed: 300,
         title: 'Archived',
         text: 'Question was saved.',
       });
