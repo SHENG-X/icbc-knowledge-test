@@ -4,5 +4,5 @@
 
 Welcome to the front page of **ICBC Knowledge Test**. This app is completely free to use. This app was initially built to help my friends and families to pass the knowledge test in BC. I tried to make the app simple and easy to use.
 
-### [Go to App](https://sheng-x.github.io/icbc-knowledge-test/home)
+### [Go to App](https://sheng-x.github.io/icbc-knowledge-test/)
 
