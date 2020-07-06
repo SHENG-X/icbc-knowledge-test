@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     percentage() {
-      return `${((this.correctCount / this.questionSize) * 100)} %`;
+      return `${((this.correctCount / this.questionSize) * 100).toFixed(0)} %`;
     },
     passed() {
       return this.correctCount / this.questionSize > 0.9;
