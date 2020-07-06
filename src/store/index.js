@@ -24,7 +24,9 @@ export default new Vuex.Store({
       localStorage.setItem(ARCHIVE_KEY, JSON.stringify(state.archived));
     },
     removeArchived(state, question) {
-      state.archived = state.archived.filter((q) => JSON.stringify(q) !== JSON.stringify(question));
+      const questionIdx = state.archived
+        .findIndex((q) => JSON.stringify(q) === JSON.stringify(question));
+      state.archived.splice(questionIdx, 1);
       localStorage.setItem(ARCHIVE_KEY, JSON.stringify(state.archived));
     },
   },
