@@ -1,4 +1,4 @@
-<img src="https://imgur.com/pr0m4CT" alt="ICBC Knowledge Test" width="256px"  height="256px"/>
+<img src="https://i.imgur.com/pr0m4CT.png" alt="ICBC Knowledge Test" width="256px"  height="256px"/>
 
 #### A Free and Open-Source ICBC Knowledge Test application that intended to help people to pass knowledge test in BC
 
