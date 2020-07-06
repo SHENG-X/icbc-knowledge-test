@@ -102,4 +102,14 @@ export default {
   display: flex;
   justify-content: center;
 }
+::v-deep .vm--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+::v-deep .vm--modal {
+  left: 50% !important;
+  transform: translateX(-50%);
+  max-width: 100%;
+}
 </style>
