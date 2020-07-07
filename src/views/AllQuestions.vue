@@ -7,6 +7,7 @@
     :questions="$store.getters.allQuestions"
     oneTestTitle="Practice All Quesions"
     :showCloseButton="false"
+    :continueFunction="() => {$router.push('/')}"
   />
 </template>
 

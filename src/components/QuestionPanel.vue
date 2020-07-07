@@ -50,7 +50,7 @@
       <md-button
         v-if="selected && currentIdx === questions.length -1"
         class="md-raised md-primary"
-        @click="() => setCurrentQuestionSet([])"
+        @click="handleContinue"
       >
         Continue
       </md-button>
@@ -98,6 +98,10 @@ export default {
     setCorrectAnswered: {
       type: Function,
       required: true,
+    },
+    continueFunction: {
+      type: Function,
+      default: null,
     },
   },
   data() {
@@ -167,6 +171,13 @@ export default {
     removeArchive() {
       this.setSelect(false);
       this.$store.commit('removeArchived', this.questions[this.currentIdx]);
+    },
+    handleContinue() {
+      if (this.continueFunction) {
+        this.continueFunction();
+      } else {
+        this.setCurrentQuestionSet([]);
+      }
     },
   },
 };

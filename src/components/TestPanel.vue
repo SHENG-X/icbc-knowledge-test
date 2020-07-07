@@ -52,6 +52,7 @@
         :showCloseButton="showCloseButton"
         :correctAnswered="correctAnswered"
         :setCorrectAnswered="setCorrectAnswered"
+        :continueFunction="continueFunction"
       />
     </div>
   </div>
@@ -92,6 +93,10 @@ export default {
     showCloseButton: {
       type: Boolean,
       default: true,
+    },
+    continueFunction: {
+      type: Function,
+      default: null,
     },
   },
   data() {

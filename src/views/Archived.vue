@@ -8,6 +8,7 @@
       :questions="questions"
       oneTestTitle="Practice Archived Quesitons"
       :showCloseButton="false"
+      :continueFunction="() => {$router.push('/')}"
     />
     <div
       v-else

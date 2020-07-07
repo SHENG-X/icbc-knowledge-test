@@ -7,6 +7,7 @@
     :questions="$store.getters.mockQuestions"
     oneTestTitle="Start Mock Test"
     :showCloseButton="false"
+    :continueFunction="() => {$router.push('/')}"
   />
 </template>
 
