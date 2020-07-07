@@ -8,7 +8,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/home',
+    name: 'home',
+    component: Home,
   },
   {
     path: '/rules',
@@ -34,11 +35,6 @@ const routes = [
     path: '/all',
     name: 'all',
     component: () => import('../views/AllQuestions.vue'),
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home,
   },
 ];
 

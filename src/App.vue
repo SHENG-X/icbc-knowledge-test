@@ -23,7 +23,7 @@
         </md-toolbar>
 
         <md-list>
-          <router-link to="/home">
+          <router-link to="/" exact>
             <md-button @click="menuVisible = !menuVisible">
               <md-list-item>
                 <span class="md-list-item-text">Home</span>
