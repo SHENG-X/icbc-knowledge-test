@@ -47,7 +47,7 @@ export default {
       return `${((this.correctCount / this.questionSize) * 100).toFixed(0)} %`;
     },
     passed() {
-      return this.correctCount / this.questionSize > 0.9;
+      return this.correctCount / this.questionSize >= 0.8;
     },
   },
 };
