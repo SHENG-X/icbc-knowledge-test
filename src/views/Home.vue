@@ -5,7 +5,7 @@
       description="These are all the questions that we have.
         It is important for you understand all the questions
         before you take the knowledge test."
-      buttonTitle="Practice All Quesions"
+      buttonTitle="Practice All Questions"
       route="/all"
     />
     <home-route-card
@@ -18,25 +18,25 @@
     />
     <home-route-card
       title="Road Sign Quizzes"
-      description="The blow quiz sets will help you learn and practice knowledge
-        of road signs.On the actual written test, you are reuqired to correctly
-        answer at least 90% of the questions."
-        buttonTitle="Practice Sign Quesions"
+      description="The quiz sets below will help you learn and practice knowledge
+      of road signs. On the actual written test, you are required to correctly
+      answer at least 80% of the questions."
+        buttonTitle="Practice Sign Questions"
         route="/signs"
     />
     <home-route-card
       title="Road Rule Quizzes"
-      description="The blow quiz sets will help you learn and practice knowledge
-        of road rules.On the actual written test, you are reuqired to correctly
-        answer at least 90% of the questions."
-        buttonTitle="Practice Rule Quesions"
+      description="The quiz sets below will help you learn and practice knowledge
+      of road rules. On the actual written test, you are required to correctly
+      answer at least 80% of the questions."
+        buttonTitle="Practice Rule Questions"
         route="/rules"
     />
     <home-route-card
       title="Archived Questions"
-      description="The questions below were you saved. It is
-      important for you to understand these questinos to pass the actual exam."
-      buttonTitle="Practice Archived Quesions"
+      description="The questions below were questions you saved. It is
+      important for you to understand these questions to pass the actual exam."
+      buttonTitle="Practice Archived Questions"
       route="/archived"
     />
   </div>
