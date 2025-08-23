@@ -5,7 +5,7 @@
       It is important for you understand all the questions
       before you take the knowledge test."
     :questions="$store.getters.allQuestions"
-    oneTestTitle="Practice All Quesions"
+    oneTestTitle="Practice All Questions"
     :showCloseButton="false"
     :continueFunction="() => {$router.push('/')}"
   />

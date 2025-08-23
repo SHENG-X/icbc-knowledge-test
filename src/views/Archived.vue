@@ -3,8 +3,8 @@
     <test-panel
       v-if="questions.length"
       title="Archived Questions"
-      description="The questions below were you saved. It is
-        important for you to understand these questinos to pass the actual exam."
+      description="The questions below were questions you saved. It is
+        important for you to understand these questions to pass the actual exam."
       :questions="questions"
       oneTestTitle="Practice Archived Quesitons"
       :showCloseButton="false"
